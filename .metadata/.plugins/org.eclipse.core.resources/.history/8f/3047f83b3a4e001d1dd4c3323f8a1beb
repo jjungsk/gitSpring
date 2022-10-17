@@ -1,0 +1,5 @@
+package com.ssafy.ws.model.controller;
+
+public class UserController {
+
+}

@@ -1,0 +1,4 @@
+//com.springsource.config.ui.prefs.activePageIndex\:/hello_di/src/hello_di/com/ssafy/hello/di4/applicationContext.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/spring_di1_xmlconfig/src/com/ssafy/board/config/application.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/ws_framework_1/src/com/ssafy/ws/model/config/application.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+eclipse.preferences.version=1

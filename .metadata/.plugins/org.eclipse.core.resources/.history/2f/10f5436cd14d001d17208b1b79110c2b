@@ -1,0 +1,10 @@
+package hello_di.com.ssafy.hello.di2;
+
+public class HelloMessageEng {
+	
+	public String helloEng(String name) {
+		
+		return "Hello " + name;
+	}
+
+}

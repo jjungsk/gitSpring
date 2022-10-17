@@ -1,0 +1,16 @@
+package hello_di.com.ssafy.hello.di2;
+
+public class HelloMessageEng implements HelloMessage {
+	
+	public String helloEng(String name) {
+		
+		return "Hello " + name;
+	}
+
+	@Override
+	public String hello(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

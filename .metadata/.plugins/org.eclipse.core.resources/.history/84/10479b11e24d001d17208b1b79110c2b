@@ -1,0 +1,5 @@
+package hello_di.com.ssafy.hello.di3;
+
+public class HelloMessageFactory {
+
+}

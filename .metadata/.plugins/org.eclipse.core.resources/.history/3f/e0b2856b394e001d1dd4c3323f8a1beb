@@ -1,0 +1,13 @@
+package com.ssafy.ws.model.service;
+
+import com.ssafy.ws.model.User;
+
+public class UserServiceImpl implements UserService {
+
+	@Override
+	public User select(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

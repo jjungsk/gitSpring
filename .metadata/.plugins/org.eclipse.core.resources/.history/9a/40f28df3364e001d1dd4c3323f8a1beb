@@ -1,0 +1,15 @@
+package com.ssafy.ws.model.repo;
+
+import java.sql.SQLException;
+
+import com.ssafy.ws.model.User;
+
+public class UserRepoImpl implements UserRepo {
+
+	@Override
+	public User select(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

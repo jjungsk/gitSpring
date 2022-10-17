@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="hello_di.com.ssafy.hello.di1.HelloMessageKor"/>
+<fullyQualifiedTypeName name="hello_di.com.ssafy.hello.di1.HelloMessageEng"/>
+<fullyQualifiedTypeName name="hello_di.com.ssafy.hello.di2.HelloMessage"/>
+<fullyQualifiedTypeName name="hello_di.com.ssafy.hello.di3.HelloMessageFactory"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.portable.ApplicationException"/>
+<fullyQualifiedTypeName name="javax.naming.Context"/>
+<fullyQualifiedTypeName name="com.ssafy.board.model.service.BoardServiceImpl"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.ssafy.ws.util.DBUtil"/>
+<fullyQualifiedTypeName name="javax.sql.DataSource"/>
+<fullyQualifiedTypeName name="com.ssafy.ws.model.service.UserServiceImpl"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
+<fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="com.ssafy.ws.model.service.BookService"/>
+<fullyQualifiedTypeName name="com.ssafy.ws.model.service.BookServiceImpl"/>
+<fullyQualifiedTypeName name="com.ssafy.ws.model.Book"/>
+</qualifiedTypeNameHistroy>

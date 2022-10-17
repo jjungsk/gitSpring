@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="ws_framework_1"/>
+<aop-project name="testProject"/>
+<aop-project name="hello_di"/>
+<aop-project name="spring_di1_xmlconfig"/>
+</aop-reference-model>
