@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-C:\SSAFY\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3217611804.index
-\testProject\src\main\java

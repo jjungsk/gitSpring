@@ -7,9 +7,12 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
 import com.ssafy.ws.model.User;
 import com.ssafy.ws.util.DBUtil;
 
+@Repository
 public class UserRepoImpl implements UserRepo {
 	
 	private DataSource dataSource;
@@ -17,7 +20,6 @@ public class UserRepoImpl implements UserRepo {
 	
 	public UserRepoImpl(DataSource dataSource, DBUtil dbUtil) {
 		this.dataSource = dataSource;
-		this.dbUtil = dbUtil;
 	}
 
 	@Override

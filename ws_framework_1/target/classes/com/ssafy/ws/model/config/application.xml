@@ -3,22 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="userRepo" class="com.ssafy.ws.model.repo.UserRepoImpl">
-		<constructor-arg ref="ds"></constructor-arg>
-		<constructor-arg ref="dbUtil"></constructor-arg>
-	</bean>
-	<bean id="userService" class="com.ssafy.ws.model.service.UserServiceImpl">
-		<property name="userRepo" ref="userRepo"></property>	
-	</bean>
-	
-	<bean id="bookRepo" class="com.ssafy.ws.model.repo.BookRepoImpl">
-		<constructor-arg ref="ds"></constructor-arg>
-		<constructor-arg ref="dbUtil"></constructor-arg>
-	</bean>
-	<bean id="bookService" class="com.ssafy.ws.model.service.BookServiceImpl">
-		<property name="bookRepo" ref="bookRepo"></property>
-	</bean>
-	
 	<bean id="dbUtil" class="com.ssafy.ws.util.DBUtil"></bean>
 	<bean id="ds" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
@@ -26,5 +10,14 @@
 		<property name="username" value="ssafy"></property>
 		<property name="password" value="ssafy"></property>
 	</bean>
+	
+	<bean id="bRepo" class="com.ssafy.ws.model.repo.BookRepoImpl">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	<bean id="uRepo" class="com.ssafy.ws.model.repo.UserRepoImpl">
+		<constructor-arg ref="ds"></constructor-arg>
+	</bean>
+	<bean id="bServce"></bean>
+	<bean id="uService" class="com.ssafy.ws.model.service.UserServiceImpl"></bean>
 
 </beans>

@@ -9,13 +9,18 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
 import com.ssafy.ws.model.Book;
 import com.ssafy.ws.util.DBUtil;
 
+@Repository
 public class BookRepoImpl implements BookRepo {
 	
 	private DataSource dataSource;
 	private DBUtil dbUtil;
+	
+	
 	
 	public BookRepoImpl(DataSource dataSource, DBUtil dbUtil) {
 		this.dataSource = dataSource;

@@ -2,9 +2,12 @@ package com.ssafy.ws.model.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.ssafy.ws.model.Book;
 import com.ssafy.ws.model.repo.BookRepo;
 
+@Service
 public class BookServiceImpl implements BookService {
 	
 	private BookRepo bookRepo;
@@ -13,9 +16,6 @@ public class BookServiceImpl implements BookService {
 		this.bookRepo = bookRepo;
 	}
 	
-	public BookRepo getBookRepo() {
-		return bookRepo;
-	}
 
 	@Override
 	public int insert(Book book) throws Exception {

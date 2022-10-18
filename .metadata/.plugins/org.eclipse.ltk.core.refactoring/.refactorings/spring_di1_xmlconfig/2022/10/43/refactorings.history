@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;DBUtil.java&apos; to &apos;ws_framework_1/src/com.ssafy.ws.util&apos;&#x0D;&#x0A;- Original project: &apos;spring_di1_xmlconfig&apos;&#x0D;&#x0A;- Destination element: &apos;ws_framework_1/src/com.ssafy.ws.util&apos;&#x0D;&#x0A;- Original element: &apos;com.ssafy.util.DBUtil.java&apos;" description="Copy compilation unit" destination="=ws_framework_1/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.ssafy.ws.util" element1="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.ssafy.util{DBUtil.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1666016646882" units="1" version="1.0"/>
-</session>
