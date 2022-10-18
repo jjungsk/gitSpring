@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="ds" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/ssafyweb?serverTimezone=UTC&amp;useUniCode=yes&amp;characterEncoding=UTF-8"></property>
+		<property name="username" value="ssafy"></property>
+		<property name="password" value="ssafy"></property>
+	</bean>
+	
+	<bean id="bRepo" class="com.ssafy.ws.model.repo.BookRepoImpl">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	<bean id="uRepo" class="com.ssafy.ws.model.repo.UserRepoImpl">
+		<constructor-arg ref="ds"/>
+	</bean>
+	
+	<bean id="bService" class="com.ssafy.ws.model.service.BookServiceImpl">
+		<property name="bookRepo" ref="bRepo"></property>
+	</bean>
+	
+	<bean id="uService" class="com.ssafy.ws.model.service.UserServiceImpl">
+		<constructor-arg ref="uRepo"/>
+	</bean>
+</beans>
