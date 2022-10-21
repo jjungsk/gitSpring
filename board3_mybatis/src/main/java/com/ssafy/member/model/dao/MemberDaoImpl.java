@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.member.model.MemberDto;
 import com.ssafy.util.SqlMapConfig;
@@ -20,7 +21,6 @@ public class MemberDaoImpl implements MemberDao {
 		try (SqlSession sqlSession = SqlMapConfig.getSqlSession()) {
 			return sqlSession.selectOne(NAMESPACE + "idCheck", userId);
 		}
-		
 	}
 
 	@Override
@@ -37,4 +37,5 @@ public class MemberDaoImpl implements MemberDao {
 			return sqlSession.selectOne(NAMESPACE + "loginMember", map);
 		}
 	}
+
 }

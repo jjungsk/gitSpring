@@ -35,7 +35,7 @@
     
     <mappers>
 		<mapper resource="mapper/member.xml" />
-		<!-- <mapper resource="mapper/board.xml" /> -->
+		<mapper resource="mapper/board.xml" />
 	</mappers>
 	
 </configuration>

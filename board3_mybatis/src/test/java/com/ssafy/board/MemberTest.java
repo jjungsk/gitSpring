@@ -1,6 +1,7 @@
 package com.ssafy.board;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -76,6 +77,7 @@ public class MemberTest extends UnitTestConfig {
 		map.put("userpwd", "1234");
 		MemberDto memberDto = memberService.loginMember(map);
 		assertNotNull(memberDto);
+//		assertNull(memberDto);
 		logger.debug("memberDto : {}", memberDto);
 	}
 	
