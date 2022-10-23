@@ -14,7 +14,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 /**
  * 전역 레벨에서 서버 오류를 처리하기 위해 @ControllerAdvice를 사용한다.
  */
-@ControllerAdvice
+//@ControllerAdvice
 public class throwExceptionIfNoHandlerFound {
 
 	private static final Logger logger = LoggerFactory.getLogger(throwExceptionIfNoHandlerFound.class);

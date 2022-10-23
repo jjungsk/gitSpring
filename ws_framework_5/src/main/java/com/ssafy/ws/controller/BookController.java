@@ -13,6 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.AbstractDocument.Content;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -158,7 +159,7 @@ public class BookController {
 	@PostMapping("/regist")
 	public String regist(Book book, Model model, @RequestParam("upfile") MultipartFile[] files, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
 		logger.debug("regist parameter Book : {}", book);
-		model.addAttribute("bookinfo", book);
+		
 		
 		// FileUpload
 		logger.debug("MultipartFile.isEmpty : {}", files[0].isEmpty());
@@ -188,6 +189,7 @@ public class BookController {
 			}
 			book.setFileInfos(fileInfos);
 		}
+		model.addAttribute("bookinfo", book);
 		
 		
 		return "regist_result"; // 정보를 다시 받아와야 하므로 redirect

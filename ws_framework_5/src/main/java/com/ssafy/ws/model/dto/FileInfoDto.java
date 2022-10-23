@@ -30,4 +30,11 @@ public class FileInfoDto {
 		this.saveFile = saveFile;
 	}
 
+	@Override
+	public String toString() {
+		return "FileInfoDto [saveFolder=" + saveFolder + ", originalFile=" + originalFile + ", saveFile=" + saveFile
+				+ "]";
+	}
+	
+
 }

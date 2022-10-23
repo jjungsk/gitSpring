@@ -8,7 +8,7 @@
 <body>
 	<!-- 코드작성 -->
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
-	<form method="POST" action="" id="form-book-regist">
+	<form method="POST" action="" id="form-book-regist" enctype="multipart/form-data">
 		<fieldset>
 			<legend>도서 등록</legend>
 			<div class="form-group" align="left">

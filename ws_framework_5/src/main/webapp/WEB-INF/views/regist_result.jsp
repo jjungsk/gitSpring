@@ -42,7 +42,9 @@
 			</tr>
 			<tr>
 				<td>이미지</td>
-				<td>${bookinfo.img}</td>
+				<td>${bookinfo.fileInfos[0]}</td>
+				<td>"${root}/upload/${bookinfo.fileInfos[0].saveFolder}/${bookinfo.fileInfos[0].saveFile}"</td>
+				<td><img src="${root}/upload/${bookinfo.fileInfos[0].saveFolder}/${bookinfo.fileInfos[0].saveFile}" /></td>
 			</tr>
 		</tbody>
 	</table>
