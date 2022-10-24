@@ -5,26 +5,48 @@
 <mapper namespace="com.ssafy.board.model.dao.BoardDao">
 
 	<resultMap type="boardDto" id="article">
-	    <result column="article_no" property="articleNo" />
-	    <result column="user_id" property="userId" />
-	    <result column="user_name" property="userName" />
-	    <result column="subject" property="subject" />
-	    <result column="content" property="content" />
-	    <result column="hit" property="hit" />
-	    <result column="register_time" property="registerTime" />
+		<result column="article_no" property="articleNo"/>
+		<result column="user_id" property="userId"/>
+		<result column="user_name" property="userName"/>
+		<result column="subject" property="subject"/>
+		<result column="content" property="content"/>
+		<result column="hit" property="hit"/>
+		<result column="register_time" property="registerTime"/>
 	</resultMap>
 	
 	<resultMap type="boardDto" id="viewArticle" extends="article">
-		<collection property=""></collection>
+		<collection property="fileInfos" column="article_no" javaType="list" ofType="fileInfoDto" select="fileInfoList"/>
 	</resultMap>
+	
+	<resultMap type="fileInfoDto" id="file">
+		<result column="save_folder" property="saveFolder"/>
+		<result column="original_file" property="originalFile"/>
+		<result column="save_file" property="saveFile"/>
+	</resultMap>
+
+	<insert id="writeArticle" parameterType="boardDto">
+		insert into board (user_id, subject, content, hit, register_time)
+		values (#{userId}, #{subject}, #{content}, 0, now())
+		<selectKey resultType="int" keyProperty="articleNo" order="AFTER">
+			select last_insert_id() <!-- 자동으로 해당 글쓴 번호를 불러옴 -->
+		</selectKey>
+	</insert>
+	
+	<insert id="registerFile" parameterType="boardDto">
+		insert into file_info (article_no, save_folder, original_file, save_file)
+		values
+		<foreach collection="fileInfos" item="fileinfo" separator=" , "> <!-- 구분자 -> 자동으로 마지막 생략 -->
+			(#{articleNo}, #{fileinfo.saveFolder}, #{fileinfo.originalFile}, #{fileinfo.saveFile})
+		</foreach>
+	</insert>
 
 	<sql id="search">
 		<if test="word != null and word != ''">
 			<if test="key == 'subject'">
 				and subject like concat('%', #{word}, '%')
 			</if>
-			<if test="key != 'sunject'">
-				and ${key} = #{word}			
+			<if test="key != 'subject'">
+				and ${key} = #{word}
 			</if>
 		</if>
 	</sql>
@@ -33,9 +55,7 @@
 		select b.article_no, b.user_id, b.subject, b.content, b.hit, b.register_time, m.user_name
 		from board b, members m 
 		where b.user_id = m.user_id
-		<!-- 값은 #{} property 특성은 ${} -->
 		<include refid="search"></include>
-		
 		order by b.article_no desc
 		limit #{start}, #{listsize}
 	</select>
@@ -49,7 +69,38 @@
 	</select>
 	
 	<select id="getArticle" parameterType="int" resultMap="viewArticle">
-		
+		select b.article_no, b.user_id, b.subject, b.content, b.hit, b.register_time, m.user_name 
+		from board b, members m
+		where b.user_id = m.user_id
+		and b.article_no = #{articleNo}
 	</select>
+	
+	<select id="fileInfoList" resultMap="file">
+		select save_folder, original_file, save_file
+		from file_info
+		where article_no = #{articleNo}
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		update board
+		set hit = hit + 1
+		where article_no = #{articleNo}
+	</update>
+	
+	<update id="modifyArticle" parameterType="boardDto">
+		update board
+		set subject = #{subject}, content = #{content}
+		where article_no = #{articleNo}
+	</update>
+	
+	<delete id="deleteFile" parameterType="int">
+		delete from file_info
+		where article_no = #{articleNo}
+	</delete>
+	
+	<delete id="deleteArticle" parameterType="int">
+		delete from board
+		where article_no = #{articleNo}
+	</delete>
 
 </mapper>

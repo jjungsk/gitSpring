@@ -6,14 +6,13 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.member.model.MemberDto;
 import com.ssafy.util.SqlMapConfig;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
-	
+
 	private final String NAMESPACE = "com.ssafy.member.model.dao.MemberDao.";
 
 	@Override

@@ -18,6 +18,7 @@ public class SqlMapConfig {
 			Reader reader = Resources.getResourceAsReader(resource);
 			factory = new SqlSessionFactoryBuilder().build(reader);
 		} catch (IOException e) {
+			System.out.println("aaaaaaa");
 			e.printStackTrace();
 		}
 	}

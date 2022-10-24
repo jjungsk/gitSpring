@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.board.model.dao.BoardDao">
+
+	<resultMap type="boardDto" id="article">
+	    <result column="article_no" property="articleNo" />
+	    <result column="user_id" property="userId" />
+	    <result column="user_name" property="userName" />
+	    <result column="subject" property="subject" />
+	    <result column="content" property="content" />
+	    <result column="hit" property="hit" />
+	    <result column="register_time" property="registerTime" />
+	</resultMap>
+	
+	<resultMap type="boardDto" id="viewArticle" extends="article">
+		<collection property=""></collection>
+	</resultMap>
+
+	<sql id="search">
+		<if test="word != null and word != ''">
+			<if test="key == 'subject'">
+				and subject like concat('%', #{word}, '%')
+			</if>
+			<if test="key != 'sunject'">
+				and ${key} = #{word}			
+			</if>
+		</if>
+	</sql>
+
+	<select id="listArticle" parameterType="map" resultMap="article">
+		select b.article_no, b.user_id, b.subject, b.content, b.hit, b.register_time, m.user_name
+		from board b, members m 
+		where b.user_id = m.user_id
+		<!-- 값은 #{} property 특성은 ${} -->
+		<include refid="search"></include>
+		
+		order by b.article_no desc
+		limit #{start}, #{listsize}
+	</select>
+	
+	<select id="getTotalArticleCount" parameterType="map" resultType="int">
+		select count(article_no)
+		from board
+		<where>
+			<include refid="search"></include>
+		</where>
+	</select>
+	
+	<select id="getArticle" parameterType="int" resultMap="viewArticle">
+		
+	</select>
+
+</mapper>
