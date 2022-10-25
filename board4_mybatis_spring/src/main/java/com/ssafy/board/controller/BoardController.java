@@ -67,8 +67,8 @@ public class BoardController {
 //		FileUpload 관련 설정.
 		logger.debug("MultipartFile.isEmpty : {}", files[0].isEmpty());
 		if (!files[0].isEmpty()) {
-			String realPath = servletContext.getRealPath("/upload");
-//			String realPath = servletContext.getRealPath("/resources/img");
+//			String realPath = servletContext.getRealPath("/upload");
+			String realPath = servletContext.getRealPath("/resources/assets/img");
 			String today = new SimpleDateFormat("yyMMdd").format(new Date());
 			String saveFolder = realPath + File.separator + today;
 			logger.debug("저장 폴더 : {}", saveFolder);
@@ -161,7 +161,10 @@ public class BoardController {
 	public String delete(@RequestParam("articleno") int articleNo, @RequestParam Map<String, String> map,
 			RedirectAttributes redirectAttributes) throws Exception {
 		logger.debug("delete articleNo : {}", articleNo);
-		boardService.deleteArticle(articleNo);
+		
+		String path = servletContext.getRealPath("/upload");
+		boardService.deleteArticle(articleNo, path);
+		
 		redirectAttributes.addAttribute("pgno", map.get("pgno"));
 		redirectAttributes.addAttribute("key", map.get("key"));
 		redirectAttributes.addAttribute("word", map.get("word"));

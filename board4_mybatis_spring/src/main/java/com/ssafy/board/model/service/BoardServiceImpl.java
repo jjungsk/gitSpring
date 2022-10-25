@@ -1,5 +1,6 @@
 package com.ssafy.board.model.service;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.board.model.BoardDto;
+import com.ssafy.board.model.FileInfoDto;
 import com.ssafy.board.model.mapper.BoardMapper;
 import com.ssafy.util.PageNavigation;
 import com.ssafy.util.SizeConstant;
@@ -28,7 +30,11 @@ public class BoardServiceImpl implements BoardService {
 	public int writeArticle(BoardDto boardDto) throws Exception {
 		boardMapper.writeArticle(boardDto);
 		
-		boardMapper.registerFile(boardDto);
+		List<FileInfoDto> list = boardDto.getFileInfos();
+		if (list != null && !list.isEmpty()) {
+			boardMapper.registerFile(boardDto);
+		}
+		
 		return 1;
 //		return boardMapper.writeArticle(boardDto);
 	}
@@ -96,8 +102,20 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void deleteArticle(int articleNo) throws Exception {
+	@Transactional
+	public void deleteArticle(int articleNo, String path) throws Exception {
+		List<FileInfoDto> list = boardMapper.fileInfoList(articleNo);
+		boardMapper.deleteFile(articleNo);
 		boardMapper.deleteArticle(articleNo);
+		
+		for (FileInfoDto fileInfoDto: list) {
+			File file = new File(path + File.separator + fileInfoDto.getSaveFolder() 
+			+ File.separator + fileInfoDto.getSaveFile());
+			if(file.exists()) {
+				file.delete();
+			}
+		}
+		
 	}
 
 }

@@ -66,8 +66,9 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Book> search(SearchCondition condition) {
-		return null;
+	public List<Book> search(SearchCondition condition) throws Exception {
+		
+		return bDao.search(condition);
 	}
 
 	/**

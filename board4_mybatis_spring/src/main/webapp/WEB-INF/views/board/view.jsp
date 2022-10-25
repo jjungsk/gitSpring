@@ -33,6 +33,9 @@
             <div class="divider mb-3"></div>
             <div class="text-secondary">
               ${article.content}
+              <br>
+              ${root}/assets/img/${article.fileInfos[0].saveFolder }/${article.fileInfos[0].saveFile }
+              <img src="${root}/assets/img/${article.fileInfos[0].saveFolder }/${article.fileInfos[0].saveFile }" >
             </div>
             <c:if test="${!empty article.fileInfos}">
 						<div class="mt-3">

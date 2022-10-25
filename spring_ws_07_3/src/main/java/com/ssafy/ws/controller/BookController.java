@@ -1,7 +1,8 @@
 package com.ssafy.ws.controller;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -60,10 +61,22 @@ public class BookController {
 	 * @param session 사용자 정보를 세션에 저장하기 위해 사용한다.
 	 * @param model   Request scope에 정보를 저장하기 위해서 사용된다.
 	 * @return
+	 * @throws Exception 
 	 */
-	// @PostMapping("/login")
-	// public String doLogin(@ModelAttribute User user, HttpSession session, Model model) {
-	// }
+	 @PostMapping("/login")
+	 public String doLogin(@ModelAttribute User user, HttpSession session, Model model) throws Exception {
+		 logger.debug("idCheck : {}", user);
+		 
+		 User userInfo = uService.login(user);
+		 if (userInfo!=null) {
+			 model.addAttribute("name", userInfo.getName());
+			 model.addAttribute("id", userInfo.getId());
+			 logger.debug("loginSuccess : {}", model);
+					 
+			 session.setAttribute("loginUser", model);
+		 }
+		 return "index";
+	 }
 
 	/**
 	 * <pre>
@@ -90,10 +103,20 @@ public class BookController {
 	 * Paging을 이용하는 pagingSearch를 이용하도록 변경한다.
 	 * 
 	 * @return
+	 * @throws Exception 
 	 */
-	// @GetMapping("/list")
-	// public String showList(Model model, @ModelAttribute SearchCondition condition) {
-	// }
+	 @GetMapping("/list")
+	 public String showList(Model model, @ModelAttribute SearchCondition condition) throws Exception {
+		List<Book> books = new ArrayList<>();
+		logger.debug("search condition : {}", condition);
+		
+		books = bService.search(condition);
+		logger.debug("book list : {}", books);
+		
+		model.addAttribute("books", books);
+		
+		return "list";
+	 }
 
 	@GetMapping("/regist")
 	public String showRegistForm() {

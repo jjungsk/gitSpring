@@ -17,8 +17,21 @@ form>label, form>select, form>input {
 	<div class="container">
 		<h1>도서 목록</h1>
 
-		<form method="get" action="${root }/list" id="searchForm" class="row">
-			<!-- 코드작성 -->
+		<form class="d-flex" method="get" action="${root }/list" id="searchForm" class="row">
+	        <input type="hidden" name="pgno" value="1"/>
+	          <select
+	            class="form-select form-select-sm ms-5 me-1 w-50"
+	            name="key"
+	            aria-label="검색조건" >
+	            	<option value="" selected>검색조건</option>
+	            	<option value="isbn">isbn</option>
+	            	<option value="title">title</option>
+	            	<option value="author">author</option>
+	          </select>
+	          <div class="input-group input-group-sm">
+	            <input type="text" class="form-control" name="word" placeholder="검색어" />
+	            <button id="btn-search" class="btn btn-dark" type="button">검색</button>
+	          </div>
 		</form>
 		<br>
 		<table class="table table-striped">

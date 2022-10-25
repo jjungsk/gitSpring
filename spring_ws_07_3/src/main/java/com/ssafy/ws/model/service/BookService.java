@@ -13,7 +13,7 @@ public interface BookService {
 	Book select(String isbn);
 
 	// 동적 쿼리를 이용해 다양한 검색 옵션을 적용할 수 있도록 search를 변경한다.
-	List<Book> search(SearchCondition condition);
+	List<Book> search(SearchCondition condition) throws Exception;
 	
 	/**
 	 * 리스트에 페이징을 적용하기 위한 메서드

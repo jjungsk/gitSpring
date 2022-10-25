@@ -35,7 +35,7 @@
 		<%--로그인 정보가 있는 경우는 사용자 이름과 로그아웃을 위한 링크를 생성한다.--%>
 		<c:if test="${!empty loginUser }">
 			<div>
-				${loginUser.name }님 반갑습니다.
+				${loginUser.id }님 반갑습니다.
 				<a href="${root }/logout">로그아웃</a>
 			</div>
 		</c:if>

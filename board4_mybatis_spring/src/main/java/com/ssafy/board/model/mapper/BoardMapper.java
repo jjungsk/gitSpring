@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ssafy.board.model.BoardDto;
+import com.ssafy.board.model.FileInfoDto;
 
 public interface BoardMapper {
 
@@ -15,6 +16,8 @@ public interface BoardMapper {
 	void updateHit(int articleNo) throws SQLException;
 	void modifyArticle(BoardDto boardDto) throws SQLException;
 	void deleteArticle(int articleNo) throws SQLException;
+	void deleteFile(int articleNo) throws SQLException;
 	void registerFile(BoardDto boardDto) throws SQLException;
+	List<FileInfoDto> fileInfoList(int articleNo) throws SQLException;
 	
 }

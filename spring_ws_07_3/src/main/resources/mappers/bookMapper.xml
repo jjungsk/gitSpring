@@ -17,7 +17,15 @@
 
 	<!-- Book에서 검색한다. -->
 	<select id="search" resultType="Book" parameterType="SearchCondition">
-	<!-- 코드작성 -->
+		select *
+		from book
+		<where>
+			<if test="word!=null and word!=''">
+				<if test="key == 'isbn'">
+				
+				</if>
+			</if>
+		</where>
 	</select>
 
 	<!-- 검색 조건에 해당하는 데이터 건수를 반환한다. -->
