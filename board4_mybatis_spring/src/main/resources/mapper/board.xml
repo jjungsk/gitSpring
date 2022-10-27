@@ -28,14 +28,14 @@
 		insert into board (user_id, subject, content, hit, register_time)
 		values (#{userId}, #{subject}, #{content}, 0, now())
 		<selectKey resultType="int" keyProperty="articleNo" order="AFTER">
-			select last_insert_id() <!-- 자동으로 해당 글쓴 번호를 불러옴 -->
+			select last_insert_id()
 		</selectKey>
 	</insert>
 	
 	<insert id="registerFile" parameterType="boardDto">
 		insert into file_info (article_no, save_folder, original_file, save_file)
 		values
-		<foreach collection="fileInfos" item="fileinfo" separator=" , "> <!-- 구분자 -> 자동으로 마지막 생략 -->
+		<foreach collection="fileInfos" item="fileinfo" separator=" , ">
 			(#{articleNo}, #{fileinfo.saveFolder}, #{fileinfo.originalFile}, #{fileinfo.saveFile})
 		</foreach>
 	</insert>
