@@ -11,7 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * 전역 레벨에서 서버 오류를 처리하기 위해 @ControllerAdvice를 사용한다.
  */
+<<<<<<< HEAD
 //@ControllerAdvice
+=======
+@ControllerAdvice
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 public class ExceptionController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ExceptionController.class);
@@ -26,6 +30,10 @@ public class ExceptionController {
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleException(Exception e) {
 		logger.error("예외 처리", e.getCause());
+<<<<<<< HEAD
+=======
+		e.printStackTrace();
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 		ModelAndView mnv = new ModelAndView();
 		// 해커 공격의 빌미를 제공할 수 있음으로 서버에서 발생한 구체적인 오류를 표시하지는 않는다.
 		if (e instanceof BindException) {

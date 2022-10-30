@@ -3,6 +3,16 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
 <mapper namespace="com.ssafy.ws.model.dao.BookDao">
+
+	<resultMap type="Book" id="bookList">
+		<result column="isbn" property="isbn"/>
+		<result column="title" property="title"/>
+		<result column="author" property="author"/>
+		<result column="price" property="price"/>
+		<result column="content" property="content"/>
+		<result column="img" property="img"/>
+	</resultMap>
+
 	<!-- Book 정보를 저장한다. -->
 	<insert id="insert" parameterType="Book">
 		insert into book
@@ -16,16 +26,15 @@
 	</select>
 
 	<!-- Book에서 검색한다. -->
-	<select id="search" resultType="Book" parameterType="SearchCondition">
-		select *
+	<select id="search" parameterType="SearchCondition" resultType="Book">
+		select isbn, title, author, price, content, img
 		from book
-		<where>
-			<if test="word!=null and word!=''">
-				<if test="key == 'isbn'">
-				
-				</if>
+		<if test="key!='none'">
+			where ${key} like '%${word}%'
+			<if test="orderBy!='none'">
+				order by ${key} ${orderBy}
 			</if>
-		</where>
+		</if>
 	</select>
 
 	<!-- 검색 조건에 해당하는 데이터 건수를 반환한다. -->

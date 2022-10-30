@@ -18,6 +18,22 @@
 		insert into book
 		values(#{isbn}, #{title}, #{author}, #{price}, #{content}, #{img})
 	</insert>
+<<<<<<< HEAD
+=======
+	
+	<!-- Book 정보를 업데이트 한다 -->
+	<update id="update" parameterType="Book">
+		update book
+		set isbn = #{isbn}, title = #{title}, author = #{author}, price = #{price}, content = #{content}, img=#{img}
+		where isbn = #{isbn};
+	</update>
+	
+	<!-- Book 정보를 지운다 -->
+	<delete id="delete" parameterType="string">
+		delete from book
+		where isbn = #{isbn}
+	</delete>
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 
 	<!-- Book 정보를 조회한다. -->
 	<select id="select" parameterType="string" resultType="Book">
@@ -36,6 +52,11 @@
 			</if>
 		</if>
 	</select>
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 
 	<!-- 검색 조건에 해당하는 데이터 건수를 반환한다. -->
 	<select id="getTotalSearchCount" resultType="int" parameterType="SearchCondition">

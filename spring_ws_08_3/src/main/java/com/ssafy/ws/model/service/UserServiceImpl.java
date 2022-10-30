@@ -1,7 +1,10 @@
 package com.ssafy.ws.model.service;
 
+<<<<<<< HEAD
 import java.io.IOException;
 
+=======
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public User select(String id) throws Exception {
 		return null;
 	}
@@ -39,4 +43,10 @@ public class UserServiceImpl implements UserService {
 		return dao.login(user);
 	}
 
+=======
+	public User select(String id) {
+		return null;
+	}
+
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 }

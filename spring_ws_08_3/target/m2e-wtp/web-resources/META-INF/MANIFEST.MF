@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: SSAFY
+=======
+Built-By: tbo
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 Build-Jdk: 1.8.0_192
 Created-By: Maven Integration for Eclipse
 

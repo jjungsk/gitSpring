@@ -1,20 +1,26 @@
 package com.ssafy.ws.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.ws.model.dto.Book;
 import com.ssafy.ws.model.dto.SearchCondition;
@@ -36,6 +42,14 @@ public class BookController {
 	 */
 	@Autowired
 	UserService uService;
+	
+	// resource 경로를 가져오기 위해 ResourceLoader를 주입 받는다..?
+	@Autowired
+	ResourceLoader resLoader;
+	
+	// File
+	@Autowired
+	private ServletContext servletContext;
 
 	/**
 	 * <pre>
@@ -132,8 +146,26 @@ public class BookController {
 	 * @throws IOException
 	 */
 	@PostMapping("/regist")
-	// public String doRegist(@ModelAttribute Book book) throws IllegalStateException, IOException {
-	// }
+	 public String doRegist(@ModelAttribute Book book, @RequestParam(required=false) MultipartFile file) throws IllegalStateException, IOException {
+		logger.debug("regist book info(before) : {}", book);
+		
+		if (file!=null && !file.isEmpty()) {
+			// 파일을 저장 할 폴더 지정
+			Resource res = resLoader.getResource("resources/upload");
+			
+			// 파일이 피어있다면 처리할 필요가 없다.
+			// prefix를 포함한 전체 이름
+			book.setImg(System.currentTimeMillis() + "_" + file.getOriginalFilename());
+			book.setOrgImg(file.getOriginalFilename());
+			
+			file.transferTo(new File(res.getFile().getCanonicalPath()+"/"+book.getImg()));
+		}
+		logger.debug("regist book info(after) : {}", book);
+		
+		bService.insert(book);
+		
+		return "regist_result";
+	 }
 
 	/**
 	 * <pre>

@@ -31,7 +31,11 @@ public class BookServiceImpl implements BookService {
 	/**
 	 * has a 관계로 사용할 BookDao 타입의 dao를 선언한다.
 	 */
+<<<<<<< HEAD
 	private BookDao bDao;
+=======
+	private BookDao dao;
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 	/**
 	 * 파일 업로드 경로를 설정하기 위해 ResourceLoader를 주입받는다.
 	 */
@@ -42,6 +46,7 @@ public class BookServiceImpl implements BookService {
 	 * setter를 통해 BookDao를 주입받는다.
 	 * 
 	 * @Autowired를 통해 BookDao 타입의 빈을 주입 받는다.
+<<<<<<< HEAD
 	 * @param bDao
 	 */
 	@Autowired
@@ -51,10 +56,22 @@ public class BookServiceImpl implements BookService {
 
 	public BookDao getBookDao() {
 		return bDao;
+=======
+	 * @param dao
+	 */
+	@Autowired
+	public void setBookRepo(BookDao dao) {
+		this.dao = dao;
+	}
+
+	public BookDao getBookRepo() {
+		return dao;
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 	}
 
 	@Override
 	@Transactional
+<<<<<<< HEAD
 	public int insert(Book book) throws IllegalStateException, IOException {
 		return bDao.insert(book);
 	}
@@ -74,6 +91,55 @@ public class BookServiceImpl implements BookService {
 	/**
 	 * 리스트에 페이징을 적용하기 위한 메서드
 	 * Map에 books를 키로 화면에 표시할 Book 목록을 저장하고
+=======
+	public int insert(Book book, MultipartFile file) throws IllegalStateException, IOException {
+		fileHandling(book, file);
+		return 0;
+	}
+
+	@Override
+	@Transactional
+	public int update(Book book, MultipartFile file) throws IllegalStateException, IOException {
+		fileHandling(book, file);
+		return dao.update(book);
+	}
+
+	private void fileHandling(Book book, MultipartFile file) throws IOException {
+		// 파일을 저장할 폴더 지정
+		Resource res = resLoader.getResource("resources/upload");
+		logger.debug("res: {}", res.getFile().getCanonicalPath());
+		if (file != null && file.getSize() > 0) {
+			// prefix를 포함한 전체 이름
+			book.setImg(System.currentTimeMillis() + "_" + file.getOriginalFilename());
+			book.setOrgImg(file.getOriginalFilename());
+
+			// 변경된 파일 이름이 적용된 Book을 BookService를 통해 DB에 저장한다.
+
+			file.transferTo(new File(res.getFile().getCanonicalPath() + "/" + book.getImg()));
+		}
+	}
+
+	@Override
+	@Transactional
+	public int delete(String isbn) {
+		return dao.delete(isbn);
+	}
+
+	@Override
+	public Book select(String isbn) {
+		return dao.select(isbn);
+	}
+
+	@Override
+	public List<Book> search(SearchCondition condition) {
+		return dao.search(condition);
+	}
+
+	/**
+	 * 리스트에 페이징을 적용하기 위한 메서드 Map에 books를 키로 화면에 표시할 Book 목록을 저장하고 navigation이라는 키로
+	 * PageNavigation 객체를 저장해서 반환한다. PageNavigation을 만들기 위한 정보로 currentPage는
+	 * SearchCondition에서 얻어오고 totalCount는 BookRepo에 새롭게 추가한 메서드를 사용한다.
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 	 * 
 	 * @param condition
 	 * @return
@@ -83,5 +149,8 @@ public class BookServiceImpl implements BookService {
 		return null;
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 }

@@ -24,5 +24,6 @@ public interface BookService {
 	 * @param condition
 	 * @return
 	 */
-	Map<String, Object> pagingSearch(SearchCondition condition);
+	Map<String, Object> pagingSearch(SearchCondition condition) throws Exception;
+
 }

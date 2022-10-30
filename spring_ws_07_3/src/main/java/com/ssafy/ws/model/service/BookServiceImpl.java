@@ -56,7 +56,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	@Transactional
 	public int insert(Book book) throws IllegalStateException, IOException {
-		return 0;
+		return bDao.insert(book);
 	}
 
 
@@ -82,5 +82,6 @@ public class BookServiceImpl implements BookService {
 	public Map<String, Object> pagingSearch(SearchCondition condition) {
 		return null;
 	}
+
 
 }

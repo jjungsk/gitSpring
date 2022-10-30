@@ -1,6 +1,10 @@
 package com.ssafy.ws.config;
 
 import org.springframework.context.annotation.Bean;
+<<<<<<< HEAD
+=======
+import org.springframework.context.annotation.Configuration;
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -12,6 +16,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 // swagger 사용을 위해 선언한다.
+<<<<<<< HEAD
+=======
+@Configuration
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 @EnableSwagger2
 public class SwaggerConfig {
 	/**

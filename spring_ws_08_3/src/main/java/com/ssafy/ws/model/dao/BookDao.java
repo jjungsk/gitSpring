@@ -9,6 +9,13 @@ public interface BookDao {
 
 	int insert(Book book);
 
+<<<<<<< HEAD
+=======
+	int update(Book book);
+
+	int delete(String isbn);
+	
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 	Book select(String isbn);
 	
 	/**
@@ -24,5 +31,8 @@ public interface BookDao {
 	 * @return
 	 */
 	int getTotalSearchCount(SearchCondition condition);
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 }

@@ -24,4 +24,5 @@ public interface BookDao {
 	 * @return
 	 */
 	int getTotalSearchCount(SearchCondition condition);
+	
 }
