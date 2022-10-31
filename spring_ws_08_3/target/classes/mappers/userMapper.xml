@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD
 <!-- name space는 UserRepo의 fully qualified name으로 설정한다. -->
 <mapper namespace="com.ssafy.ws.model.dao.UserDao">
 	
@@ -17,9 +16,4 @@
 		where id=#{id} and pass=#{pass}
 	</select>
 	
-=======
-<mapper namespace="com.ssafy.ws.model.dao.UserDao">
-	
-	<!-- User 정보를 조회한다. -->
->>>>>>> 8898bdd4d1b0d441d306d528d6831f01c6905c75
 </mapper>
